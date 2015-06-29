@@ -63,7 +63,7 @@
 		
 		var transferCompleteHandler = function() {
 			if (onComplete) {
-				onComplete($.parseJSON(this.responseText), this);
+				onComplete(this.responseText, this);
 			}
 			unsetUploading();
 		};
