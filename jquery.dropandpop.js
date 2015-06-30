@@ -1,6 +1,6 @@
 (function ($) {
 	
-	$.fn.dropandpop = function(uploadUrl, onDrop, onComplete) {
+	$.fn.dropandpop = function(uploadUrl, onComplete, onDrop, onSelect) {
 		var $this = this;
 		var isUploading = false;
 		
@@ -117,6 +117,9 @@
 			$(this).removeClass('dropandpop-drag-over');
 			setUploading();
 			var files = e.originalEvent.target.files || e.originalEvent.dataTransfer.files;
+			if (onSelect) {
+				onSelect(files, e);
+			}
 			uploadFiles(files);
 		};
 		$fileInput.bind('change', fileSelectHandler);
